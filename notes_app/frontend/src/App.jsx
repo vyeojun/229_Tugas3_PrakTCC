@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import './App.css';
 
-const API = import.meta.env.VITE_API_URL || 'http://localhost:8080';
+const API = 'https://backend-notes-1071185216478.asia-southeast2.run.app';
 
 function App() {
   const [notes, setNotes] = useState([]);
@@ -77,26 +77,26 @@ function App() {
   return (
     <div className="app-container">
       <header className="app-header">
-        <h1>📝 Notes App</h1>
-        <p className="subtitle">Simpan dan kelola catatan kamu</p>
+        <h1> this note </h1>
+        <p className="subtitle"> ayo isi catatanmu disini! </p>
       </header>
 
       <div className="form-card">
-        <h2>{editId ? '✏️ Edit Catatan' : '➕ Tambah Catatan'}</h2>
+        <h2>{editId ? 'edit catatan' : 'tambah catatan'}</h2>
 
         {error && <div className="error-msg">{error}</div>}
 
         <input
           className="input-field"
           type="text"
-          placeholder="Judul catatan..."
+          placeholder="judul catatan..."
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
 
         <textarea
           className="textarea-field"
-          placeholder="Isi catatan..."
+          placeholder="isi catatan..."
           rows={4}
           value={content}
           onChange={(e) => setContent(e.target.value)}
@@ -119,9 +119,9 @@ function App() {
       </div>
 
       <div className="notes-section">
-        <h2>📋 Daftar Catatan ({notes.length})</h2>
+        <h2> daftar catatan ({notes.length})</h2>
         {notes.length === 0 ? (
-          <div className="empty-state">Belum ada catatan. Tambahkan yang pertama!</div>
+          <div className="empty-state">oiya, belum ada catatan ayo isi disini!</div>
         ) : (
           <div className="notes-grid">
             {notes.map((note) => (
@@ -133,10 +133,10 @@ function App() {
                 <p className="note-content">{note.content}</p>
                 <div className="note-actions">
                   <button className="btn btn-edit" onClick={() => handleEdit(note)}>
-                    ✏️ Edit
+                    Edit
                   </button>
                   <button className="btn btn-delete" onClick={() => handleDelete(note.id)}>
-                    🗑️ Hapus
+                    Hapus
                   </button>
                 </div>
               </div>
